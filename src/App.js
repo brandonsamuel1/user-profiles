@@ -5,16 +5,13 @@ function App() {
   const [users, setUsers] = useState([])
   const [inputText, setInputText] = useState('')
 
-  // const getUsers = () => {
-  //   fetch('https://jsonplaceholder.typicode.com/users', {
-  //     headers : { 
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //      }
-  //   })
-  //   .then((response) => {response.json()})
-  //   .then((users) => setUsers(users));
-  // }
+  function handleSearch(e) {
+    setInputText(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const filteredUsers = users.filter(user => user.name.toLowerCase().includes(inputText))
+  console.log(filteredUsers);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -25,17 +22,17 @@ function App() {
   return (
     <div className="App">
       <h1>Search User Profiles</h1>
-      <input placeholder='Search a user...'/>
+      <input placeholder='Search a user...' onChange={handleSearch}/>
       {users.map((user) => 
-        <div className="card">
+        <div key={user.id} className="card">
           <img src={`https://robohash.org/${user.id}`} alt="John" />
           <h1>{user.name}</h1>
           <p className="title">CEO & Founder, {user.company.name}</p>
           <p>Harvard University</p>
-          <a href="#"><i className="fa fa-dribbble"></i></a>
-          <a href="#"><i className="fa fa-twitter"></i></a>
-          <a href="#"><i className="fa fa-linkedin"></i></a>
-          <a href="#"><i className="fa fa-facebook"></i></a>
+          <a><i className="fa fa-dribbble"></i></a>
+          <a><i className="fa fa-twitter"></i></a>
+          <a><i className="fa fa-linkedin"></i></a>
+          <a><i className="fa fa-facebook"></i></a>
           <p><button>Contact</button></p>
         </div>
       )}
