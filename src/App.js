@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+import CardList from './components/CardList/card-list.component';
+import SearchBar from './components/SearchBar/search-bar.component';
+
 function App() {
   const [users, setUsers] = useState([])
   const [inputText, setInputText] = useState('')
@@ -22,20 +25,8 @@ function App() {
   return (
     <div className="App">
       <h1>Search User Profiles</h1>
-      <input placeholder='Search a user...' onChange={handleSearch}/>
-      {users.map((user) => 
-        <div key={user.id} className="card">
-          <img src={`https://robohash.org/${user.id}`} alt="John" />
-          <h1>{user.name}</h1>
-          <p className="title">CEO & Founder, {user.company.name}</p>
-          <p>Harvard University</p>
-          <a><i className="fa fa-dribbble"></i></a>
-          <a><i className="fa fa-twitter"></i></a>
-          <a><i className="fa fa-linkedin"></i></a>
-          <a><i className="fa fa-facebook"></i></a>
-          <p><button>Contact</button></p>
-        </div>
-      )}
+      <SearchBar placeholder='Search a user...' handleSearch={handleSearch}/>
+      <CardList users={filteredUsers}/>
     </div>
   );
 }
