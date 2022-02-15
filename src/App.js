@@ -10,11 +10,9 @@ function App() {
 
   function handleSearch(e) {
     setInputText(e.target.value)
-    console.log(e.target.value)
   }
 
   const filteredUsers = users.filter(user => user.name.toLowerCase().includes(inputText))
-  console.log(filteredUsers);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
