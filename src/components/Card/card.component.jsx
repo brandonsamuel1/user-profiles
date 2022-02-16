@@ -2,7 +2,7 @@ import React from 'react';
 import './card.styles.css'
 
 function Card(props) {
-    return(
+    return (
         <div className='card'>
             <img src={`https://robohash.org/${props.user.id}`} alt="John" />
             <h1>{props.user.name}</h1>

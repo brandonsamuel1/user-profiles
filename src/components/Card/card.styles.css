@@ -1,8 +1,15 @@
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  margin: auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #DCDCDC;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
 }
 
 .title {
